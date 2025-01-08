@@ -24,6 +24,13 @@ app.set("views", path.join(srcPath, "views"));
 import passport from "./config/passportConfig.js";
 app.use(passport.initialize());
 
+// Uso de Swagger
+import swaggerUI from "swagger-ui-express";
+import swaggerJSDoc from "swagger-jsdoc";
+import { info } from "./docs/info.js";
+const specs = swaggerJSDoc(info);
+app.use("/docs", swaggerUI.serve, swaggerUI.setup(specs));
+
 // Routes
 app.use("/api", routes);
 
