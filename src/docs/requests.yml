@@ -129,7 +129,7 @@ components:
             type: string
             description: Comprador del ticket
             example: Gregorio
-        User:
+      User:
         type: object
         required:
           - email

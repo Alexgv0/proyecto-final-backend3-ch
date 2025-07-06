@@ -3,9 +3,17 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js --env PROD --port 80 --database MONGO",
-        "dev": "nodemon index.js -- --env DEV --port 3000 --database MONGO",
-        "test": "echo \"Error: no test specified\" && exit 1"
+          "start": "node index.js --env PROD --port 80 --database MONGO",
+          "dev": "nodemon index.js -- --env DEV --port 3000 --database MONGO",
+          "test": "jest",
+          "test:adoption": "set NODE_OPTIONS=--experimental-vm-modules && jest src/tests/adoption.test.js",
+          "test:auth": "jest src/tests/auth.test.js",
+          "test:cart": "jest src/tests/cart.test.js",
+          "test:handlebars": "jest src/tests/handlebars.test.js",
+          "test:mocks": "jest src/tests/mocks.test.js",
+          "test:pets": "jest src/tests/pets.test.js",
+          "test:product": "jest src/tests/product.test.js",
+          "test:sessions": "jest src/tests/sessions.test.js"
     },
     "repository": {
         "type": "git",
@@ -43,6 +51,9 @@
     },
     "type": "module",
     "devDependencies": {
-        "jest": "^29.7.0"
+        "chai": "^5.1.2",
+        "jest": "^29.7.0",
+        "mocha": "^11.0.1",
+        "supertest": "^7.0.0"
     }
 }
