@@ -3,8 +3,9 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-          "start": "node index.js --env PROD --port 80 --database MONGO",
-          "dev": "nodemon index.js -- --env DEV --port 3000 --database MONGO",
+          "start": "node index.js --env PROD  --database MONGO",
+          "dev": "nodemon index.js --env DEV",
+          "dev2": "node index.js --port 8080 --env PROD  --database MONGO",
           "test": "jest",
           "test:adoption": "set NODE_OPTIONS=--experimental-vm-modules && jest src/tests/adoption.test.js",
           "test:auth": "jest src/tests/auth.test.js",

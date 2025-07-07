@@ -1,5 +1,5 @@
+// Importando Commander para manejar argumentos de línea de comandos
 import { program } from "commander";
-import {PORT} from "./config.js"
 // Configuración de Commander
 program
     .option(
@@ -15,7 +15,6 @@ program
         "-db, --database <string>",
         "Base de datos",
         value => value.toUpperCase(),
-        "MONGO"
     );
     
     program.parse(process.argv);
