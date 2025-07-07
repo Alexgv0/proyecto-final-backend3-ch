@@ -1,6 +1,6 @@
 import ClassController from "./classController.js";
 import AuthServices from "../services/authServices.js";
-import { successResponse, errorResponse } from "../utils/responseHandler.js";
+import responseHandler from "../utils/responseHandler.js";
 import { generateAndSaveToken } from "../passport/jwt-strategy.js";
 import { loginResponse, registerResponse } from "../middlewares/authConsoleResponses.js";
 import passport from "passport";
@@ -21,20 +21,20 @@ export default class AuthController extends ClassController {
             passport.authenticate(strategyName, config, (err, user, info) => {
                 if (err) {
                     console.error(err);
-                    return errorResponse(res, "Error del servidor", 500);
+                    return responseHandler(res, "Error del servidor", 500);
                 }
     
                 if (info?.userExists) {
-                    return errorResponse(res, info.message, 409);
+                    return responseHandler(res, info.message, 409);
                 }
     
                 if (info?.status === 401) {
-                    return errorResponse(res, info.message, 401);
+                    return responseHandler(res, info.message, 401);
                 }
     
                 if (!user) {
                     if (strategyName === "google") return next();
-                    return errorResponse(res, info?.message || "Autenticación fallida", 401);
+                    return responseHandler(res, info?.message || "Autenticación fallida", 401);
                 }
                 req.user = user;
                 next();
@@ -54,7 +54,7 @@ export default class AuthController extends ClassController {
 
             loginResponse(req, res, next);
 
-            return successResponse(res, { user: req.user, token }, "Login exitoso");
+            return responseHandler(res, { user: req.user, token }, "Login exitoso");
         });
     }
 
@@ -70,7 +70,7 @@ export default class AuthController extends ClassController {
 
             //registerResponse(req, res, next);
 
-            return successResponse(res, { user: req.user, token }, "Registro exitoso", 201);
+            return responseHandler(res, { user: req.user, token }, "Registro exitoso", 201);
         });
     }
 
@@ -97,7 +97,7 @@ export default class AuthController extends ClassController {
 
                 //loginResponse(req, res, next);
 
-                return successResponse(res, { user: req.user, token }, "Ingreso por Google exitoso");
+                return responseHandler(res, { user: req.user, token }, "Ingreso por Google exitoso");
             });
         } catch (error) {
             console.error("Error en loginOrRegisterGoogle:", error);

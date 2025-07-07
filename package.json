@@ -17,14 +17,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Alexgv0/EntregaFinal-BackEnd2-CoderHouse.git"
+        "url": "git+https://github.com/Alexgv0/proyecto-final-backend3-ch.git"
     },
     "author": "Kevin Alex Muñoz Pascal",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/Alexgv0/EntregaFinal-BackEnd2-CoderHouse/issues"
+        "url": "https://github.com/Alexgv0/proyecto-final-backend3-ch/issues"
     },
-    "homepage": "https://github.com/Alexgv0/EntregaFinal-BackEnd2-CoderHouse#readme",
+    "homepage": "https://github.com/Alexgv0/proyecto-final-backend3-ch#readme",
     "description": "",
     "dependencies": {
         "@faker-js/faker": "^9.2.0",
